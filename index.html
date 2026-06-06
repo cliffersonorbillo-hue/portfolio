@@ -1,10 +1,505 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Portfolio</title>
-</head>
-<body>
-    <h1>Hello, I'm Clifferson!</h1>
-    <p>Welcome to my portfolio site.</p>
-</body>
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Clifferson Orbillo | IT Support & Creative Problem Solver</title>
+  <!-- Tailwind + Lucide + Custom Fonts -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap');
+   
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body, #app {
+      height: 100%;
+      width: 100%;
+    }
+  
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    .header-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: #cbd5e1;
+      font-weight: 300;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .bio-text {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: #94a3b8;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .exp-card {
+      background: linear-gradient(135deg, rgba(51, 65, 85, 0.6), rgba(30, 27, 75, 0.6));
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 24px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.8s ease-out both;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(96, 165, 250, 0.6);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px rgba(96, 165, 250, 0.15);
+    }
+
+    .exp-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      background: linear-gradient(120deg, #e2e8f0, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+      border-left: 2px solid #818cf8;
+      padding-left: 0.6rem;
+    }
+
+    .exp-desc {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .exp-bullet {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      margin-bottom: 0.9rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .exp-bullet i {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      color: #60a5fa;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, rgba(51, 65, 85, 0.5), rgba(30, 27, 75, 0.5));
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .project-card:hover {
+      border-color: rgba(96, 165, 250, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(96, 165, 250, 0.1);
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #0f172a;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-button-outline {
+      background: transparent;
+      border: 1px solid #60a5fa;
+      color: #60a5fa;
+    }
+
+    .cta-button-outline:hover {
+      background: rgba(96, 165, 250, 0.1);
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .icon-small {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Profile image styling for actual photo */
+    .profile-img-frame {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #ec4899);
+      padding: 4px;
+      box-shadow: 0 25px 35px -12px rgba(96, 165, 250, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .profile-img-frame:hover {
+      transform: scale(1.02);
+    }
+    .profile-img-inner {
+      border-radius: 28px;
+      overflow: hidden;
+      background: #0f172a;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1e293b;
+    }
+    .profile-img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .profile-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+    }
+
+    .contact-card {
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      transition: all 0.2s ease;
+    }
+    .contact-card:hover {
+      border-color: rgba(96, 165, 250, 0.5);
+      background: rgba(30, 41, 59, 0.6);
+    }
+
+    .social-icon-link {
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .social-icon-link:hover {
+      transform: translateY(-2px);
+      color: #60a5fa;
+    }
+  </style>
+ </head>
+ <body>
+  <div id="app" class="w-full h-full overflow-auto">
+   <!-- Navigation -->
+   <nav class="fixed top-0 w-full bg-gradient-to-b from-slate-900/95 to-transparent backdrop-blur-sm z-50 px-6 py-4 md:px-12">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+     <span class="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent tracking-tight">Clifferson.dev</span>
+     <div class="flex gap-6">
+        <a href="#experience" class="text-slate-300 hover:text-blue-400 transition text-sm font-medium border-b border-transparent hover:border-blue-400 pb-0.5">Experience</a>
+        <a href="#contact" class="text-slate-300 hover:text-blue-400 transition text-sm font-medium">Contact</a>
+     </div>
+    </div>
+   </nav>
+
+   <!-- Hero Section -->
+   <section class="min-h-screen w-full flex items-center justify-center px-6 md:px-12 pt-20 pb-10">
+    <div class="max-w-4xl mx-auto text-center">
+     <h1 class="header-title mb-4">Hi, I'm <span id="full-name">Clifferson Orbillo</span></h1>
+     <p class="subtitle mb-6" id="job-title">IT Support Specialist & Creative Problem Solver</p>
+     <p class="bio-text mb-12 mx-auto max-w-2xl" id="bio-text">Bridging the gap between people and technology. I solve hardware, software, and network issues with empathy, clear communication, and a dash of creative thinking.</p>
+     <a href="#experience" class="cta-button inline-flex items-center"> <span>View IT Experience</span> <i data-lucide="arrow-right" class="icon-small"></i> </a>
+     <div class="mt-16 scroll-indicator text-center animate-bounce">
+      <i data-lucide="chevron-down" style="width: 32px; height: 32px; margin: 0 auto; color: #60a5fa;"></i>
+     </div>
+    </div>
+   </section>
+
+   <!-- About Section with personal photo -->
+   <section id="about" class="w-full px-6 md:px-12 py-20 bg-gradient-to-b from-slate-900/50 to-transparent">
+    <div class="max-w-5xl mx-auto">
+     <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" id="about-heading">About Me</span></h2>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6 order-1">
+       <div class="inline-block px-4 py-2 bg-blue-500/20 border border-blue-400/40 rounded-full mb-2">
+        <p class="text-blue-300 text-sm font-semibold" id="about-status">2nd-yr BS Information Technology</p>
+       </div>
+       <p class="text-slate-300 text-lg leading-relaxed" id="about-text">I'm an aspiring IT professional with hands-on experience in help desk support, network assistance, and academic tech coordination. I don't just fix errors — I translate complex tech into human-friendly solutions.</p>
+       <p class="text-slate-400 text-base leading-relaxed">Beyond troubleshooting, I believe in empowering users through documentation, active listening, and proactive support. Currently seeking opportunities to grow as a systems analyst or IT support specialist.</p>
+       <div class="pt-4">
+        <a href="#experience" class="cta-button inline-flex items-center"> <span>My IT Journey</span> <i data-lucide="arrow-right" class="icon-small"></i> </a>
+       </div>
+      </div>
+      
+      <!-- Profile photo with link -->
+      <div class="flex justify-center items-center order-2">
+       <div class="profile-img-frame">
+        <div class="profile-img-inner">
+          <a href="https://example.com/your-link" class="profile-link" target="_blank" rel="noopener noreferrer">
+            <img id="profile-image" src="pp1.jpg" alt="Clifferson Orbillo photo" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=1E293B&color=60A5FA&bold=true&size=280&rounded=false&fontsize=0.65&name=Clifferson+Orbillo';">
+          </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- EXPERIENCE Section -->
+   <section id="experience" class="w-full px-6 md:px-12 py-20 bg-gradient-to-b from-transparent via-slate-900 to-slate-900">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-4xl md:text-5xl font-bold mb-5 text-center"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Professional Experience</span></h2>
+     <p class="text-center text-slate-400 mb-14 max-w-2xl mx-auto">Real‑world IT support, network assistance, and academic tech coordination — building reliable systems and better user experiences.</p>
+     
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 1: Junior IT Support Assistant -->
+        <div class="exp-card" style="animation-delay: 0.1s;">
+            <div class="flex items-center gap-3 mb-1">
+                <i data-lucide="computer" style="width: 28px; height: 28px; color: #60a5fa;"></i>
+                <h3 class="exp-title">Junior IT Support Assistant</h3>
+            </div>
+            <div class="exp-subtitle">2024 – Present · University Help Desk / Internship</div>
+            <div class="exp-desc">
+                <div class="exp-bullet"><i data-lucide="wrench" class="icon-small"></i><span><strong>Hardware & Software Troubleshooting:</strong> Resolved 20+ weekly tickets (OS errors, printer connectivity, account lockouts) using Freshdesk & Jira.</span></div>
+                <div class="exp-bullet"><i data-lucide="file-text" class="icon-small"></i><span><strong>User Training & Documentation:</strong> Wrote step‑by‑step guides for password resets & Wi‑Fi access, reducing repeated tickets by 30%.</span></div>
+                <div class="exp-bullet"><i data-lucide="monitor" class="icon-small"></i><span><strong>Lab Maintenance:</strong> Imaged 50+ lab computers per semester with Windows/Linux, ensuring updated drivers and security patches.</span></div>
+                <div class="exp-bullet"><i data-lucide="message-square" class="icon-small"></i><span><strong>Communication under pressure:</strong> Explained technical fixes to non‑technical users without jargon, improving first‑contact resolution rates.</span></div>
+            </div>
+        </div>
+        
+        <!-- 2: Network Support Volunteer -->
+        <div class="exp-card" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-3 mb-1">
+                <i data-lucide="wifi" style="width: 28px; height: 28px; color: #a78bfa;"></i>
+                <h3 class="exp-title">Network Support Volunteer</h3>
+            </div>
+            <div class="exp-subtitle">2024 – 2025 · Community Internet Access Program</div>
+            <div class="exp-desc">
+                <div class="exp-bullet"><i data-lucide="router" class="icon-small"></i><span><strong>On‑site Connectivity Setup:</strong> Assisted in installing routers, access points, and Ethernet cabling for three low‑income community centers.</span></div>
+                <div class="exp-bullet"><i data-lucide="signal" class="icon-small"></i><span><strong>Signal Optimization:</strong> Conducted site surveys using Wi‑Fi analyzers to identify interference, increasing average signal strength by 25%.</span></div>
+                <div class="exp-bullet"><i data-lucide="users" class="icon-small"></i><span><strong>User Access Management:</strong> Created and distributed secure Wi‑Fi credentials to 150+ users while maintaining activity logs for reporting.</span></div>
+                <div class="exp-bullet"><i data-lucide="git-pull-request" class="icon-small"></i><span><strong>Translating technical issues:</strong> Converted community reports ("internet is slow") into actionable diagnostic steps for senior network techs.</span></div>
+            </div>
+        </div>
+        
+        <!-- 3: IT Student Assistant -->
+        <div class="exp-card" style="animation-delay: 0.3s;">
+            <div class="flex items-center gap-3 mb-1">
+                <i data-lucide="graduation-cap" style="width: 28px; height: 28px; color: #ec4899;"></i>
+                <h3 class="exp-title">IT Student Assistant</h3>
+            </div>
+            <div class="exp-subtitle">2025 – Present · College IT Department</div>
+            <div class="exp-desc">
+                <div class="exp-bullet"><i data-lucide="presentation" class="icon-small"></i><span><strong>Classroom Tech Support:</strong> Prepared computer labs, ensuring projectors, software licenses, and network drives functioned for faculty.</span></div>
+                <div class="exp-bullet"><i data-lucide="clipboard-list" class="icon-small"></i><span><strong>Asset Inventory Management:</strong> Logged 200+ IT items (laptops, cables, adapters) using spreadsheets, reducing lost equipment by 40%.</span></div>
+                <div class="exp-bullet"><i data-lucide="package" class="icon-small"></i><span><strong>Software Installation Assistance:</strong> Helped students install IDEs (VS Code, NetBeans) and DB tools (MySQL Workbench) during lab hours.</span></div>
+                <div class="exp-bullet"><i data-lucide="alert-circle" class="icon-small"></i><span><strong>Clear escalation protocols:</strong> Assessed issues on‑site and routed complex hardware failures to senior techs with detailed documentation.</span></div>
+            </div>
+        </div>
+     </div>
+     
+     <div class="mt-20 text-center">
+        <p class="text-slate-400 text-sm border-t border-slate-700/50 inline-block pt-6 px-8">⚡ Help desk · Networking · User training · Asset management · Documentation ⚡</p>
+     </div>
+    </div>
+   </section>
+
+   <!-- Impact & Initiatives -->
+   <section class="w-full px-6 md:px-12 py-20 bg-gradient-to-b from-slate-900 to-indigo-950/20">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center"><span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Impact & Initiatives</span></h2>
+     <div class="grid md:grid-cols-3 gap-7">
+        <div class="project-card text-center">
+            <i data-lucide="trending-up" style="width: 42px; height: 42px; margin: 0 auto 1rem; color: #60a5fa;"></i>
+            <h3 class="text-xl font-semibold mb-2">30% Ticket Reduction</h3>
+            <p class="text-slate-400 text-sm">Self-service documentation for Wi-Fi & password resets decreased repetitive help desk requests.</p>
+        </div>
+        <div class="project-card text-center">
+            <i data-lucide="signal" style="width: 42px; height: 42px; margin: 0 auto 1rem; color: #a78bfa;"></i>
+            <h3 class="text-xl font-semibold mb-2">+25% Signal Strength</h3>
+            <p class="text-slate-400 text-sm">Wi‑Fi site surveys and AP repositioning for community centers → measurable coverage improvement.</p>
+        </div>
+        <div class="project-card text-center">
+            <i data-lucide="database" style="width: 42px; height: 42px; margin: 0 auto 1rem; color: #ec4899;"></i>
+            <h3 class="text-xl font-semibold mb-2">Asset Loss Reduction</h3>
+            <p class="text-slate-400 text-sm">Introduced inventory tracking for 200+ devices → 40% decrease in lost or misplaced equipment.</p>
+        </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Skills & Tools -->
+   <section class="w-full px-6 md:px-12 py-20">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Core IT Skills</span></h2>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="p-5 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-blue-500 transition">
+       <i data-lucide="help-circle" style="width: 32px; height: 32px; margin: 0 auto 0.5rem; color: #60a5fa;"></i>
+       <p class="text-sm font-semibold">Help Desk & Ticketing</p>
+      </div>
+      <div class="p-5 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-blue-500 transition">
+       <i data-lucide="network" style="width: 32px; height: 32px; margin: 0 auto 0.5rem; color: #a78bfa;"></i>
+       <p class="text-sm font-semibold">Network Setup & Analysis</p>
+      </div>
+      <div class="p-5 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-blue-500 transition">
+       <i data-lucide="hard-drive" style="width: 32px; height: 32px; margin: 0 auto 0.5rem; color: #ec4899;"></i>
+       <p class="text-sm font-semibold">Hardware Imaging</p>
+      </div>
+      <div class="p-5 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-blue-500 transition">
+       <i data-lucide="book-open" style="width: 32px; height: 32px; margin: 0 auto 0.5rem; color: #06b6d4;"></i>
+       <p class="text-sm font-semibold">Technical Documentation</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Contact Section: with Gmail & Facebook (KLIPERSON) linked -->
+   <section id="contact" class="w-full px-6 md:px-12 py-20 bg-gradient-to-t from-slate-900 via-slate-900 to-transparent">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Let's Connect</span></h2>
+     <p class="text-center text-slate-300 mb-12 text-lg max-w-2xl mx-auto">Need IT support, troubleshooting documentation, or just a tech conversation? Reach out.</p>
+     
+     <div class="grid md:grid-cols-2 gap-8">
+        <!-- Contact details (Gmail + Facebook + phone + location) -->
+        <div class="space-y-5">
+            <!-- Gmail link -->
+            <div class="contact-card rounded-2xl p-5 flex items-start gap-4 transition group">
+                <div class="bg-blue-500/20 p-3 rounded-full group-hover:bg-blue-500/30 transition"><i data-lucide="mail" class="text-blue-400" style="width: 24px;"></i></div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg">Gmail</h3>
+                    <a href="mailto:clifferson.orbillo@gmail.com" class="text-slate-300 hover:text-blue-400 break-all transition flex items-center gap-1">
+                        clifferson.orbillo@gmail.com
+                        <i data-lucide="external-link" class="icon-small opacity-60"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Facebook link with correct username: KLIPERSON -->
+            <div class="contact-card rounded-2xl p-5 flex items-start gap-4 transition group">
+                <div class="bg-blue-600/20 p-3 rounded-full group-hover:bg-blue-600/30 transition"><i data-lucide="facebook" class="text-blue-400" style="width: 24px;"></i></div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg">Facebook</h3>
+                    <a href="https://www.facebook.com/KLIPERSON" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1">
+                        Clifferson D. Orbillo (@KLIPERSON)
+                        <i data-lucide="external-link" class="icon-small opacity-60"></i>
+                    </a>
+                    <p class="text-xs text-slate-500 mt-1">Tap to visit profile</p>
+                </div>
+            </div>
+            
+            <!-- Phone / SMS -->
+            <div class="contact-card rounded-2xl p-5 flex items-start gap-4 transition group">
+                <div class="bg-purple-500/20 p-3 rounded-full group-hover:bg-purple-500/30 transition"><i data-lucide="phone" class="text-purple-400" style="width: 24px;"></i></div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg">Phone / SMS</h3>
+                    <a href="tel:09913573128" class="text-slate-300 hover:text-purple-400">0991 357 3128</a>
+                </div>
+            </div>
+            
+            <!-- Location -->
+            <div class="contact-card rounded-2xl p-5 flex items-start gap-4 transition group">
+                <div class="bg-pink-500/20 p-3 rounded-full group-hover:bg-pink-500/30 transition"><i data-lucide="map-pin" class="text-pink-400" style="width: 24px;"></i></div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg">Location</h3>
+                    <p class="text-slate-300">Prk 1 Tagpore, Panabo City</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side: Social callout with GitHub, LinkedIn, Instagram and extra Facebook mention -->
+        <div class="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/60 flex flex-col justify-center items-center text-center">
+            <i data-lucide="sparkle" style="width: 48px; height: 48px; color: #a78bfa; margin-bottom: 1rem;"></i>
+            <h3 class="text-2xl font-bold mb-2">Interested?</h3>
+            <p class="text-slate-300 mb-6">Check my socials or drop a message — let's solve tech challenges together.</p>
+            <div class="flex gap-4 flex-wrap justify-center">
+                <a href="https://github.com/yourusername" target="_blank" class="cta-button-outline cta-button inline-flex items-center social-icon-link"> <i data-lucide="github" class="icon-small"></i> GitHub </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="cta-button-outline cta-button inline-flex items-center social-icon-link"> <i data-lucide="linkedin" class="icon-small"></i> LinkedIn </a>
+                <a href="https://instagram.com/yourusername" target="_blank" class="cta-button-outline cta-button inline-flex items-center social-icon-link"> <i data-lucide="instagram" class="icon-small"></i> Instagram </a>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-700/40 w-full">
+                <p class="text-xs text-slate-400">Also find me as <a href="https://www.facebook.com/KLIPERSON" target="_blank" class="text-blue-300 font-medium hover:underline">Clifferson D. Orbillo (KLIPERSON)</a> on Facebook</p>
+            </div>
+        </div>
+     </div>
+     
+     <div class="mt-16 text-center text-slate-500 text-sm border-t border-slate-800 pt-8">
+        © 2025 Clifferson Orbillo — IT Support & Creative Problem Solver
+     </div>
+    </div>
+   </section>
+  </div>
+
+  <script>
+    // Dynamic text updates (keeping editable fields)
+    const defaultConfig = {
+      full_name: "Clifferson Orbillo",
+      job_title: "IT Support Specialist & Creative Problem Solver",
+      bio: "Bridging the gap between people and technology. I solve hardware, software, and network issues with empathy, clear communication, and a dash of creative thinking.",
+      about_heading: "About Me",
+      about_text: "I'm an aspiring IT professional with hands-on experience in help desk support, network assistance, and academic tech coordination. I don't just fix errors — I translate complex tech into human-friendly solutions.",
+      email: "clifferson.orbillo@gmail.com"
+    };
+    let config = { ...defaultConfig };
+
+    function updateUI() {
+      document.getElementById("full-name").textContent = config.full_name;
+      document.getElementById("job-title").textContent = config.job_title;
+      document.getElementById("bio-text").textContent = config.bio;
+      document.getElementById("about-heading").textContent = config.about_heading;
+      document.getElementById("about-text").textContent = config.about_text;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateUI();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      const observer = new MutationObserver(() => { if(lucide) lucide.createIcons(); });
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  </script>
+ </body>
 </html>
