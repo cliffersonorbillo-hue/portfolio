@@ -9,7 +9,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap');
-   
 
     * {
       margin: 0;
@@ -21,7 +20,7 @@
       height: 100%;
       width: 100%;
     }
-  
+
     body {
       font-family: 'Outfit', sans-serif;
       background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
@@ -176,7 +175,7 @@
     .profile-img-frame {
       position: relative;
       width: 100%;
-      max-width: 280px;
+      max-width: 300px;
       margin: 0 auto;
       border-radius: 32px;
       background: linear-gradient(135deg, #60a5fa, #a78bfa, #ec4899);
@@ -260,11 +259,12 @@
     </div>
    </section>
 
-   <!-- About Section with personal photo -->
+   <!-- About Section with pp1.jpg photo (your actual photo) -->
    <section id="about" class="w-full px-6 md:px-12 py-20 bg-gradient-to-b from-slate-900/50 to-transparent">
     <div class="max-w-5xl mx-auto">
      <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" id="about-heading">About Me</span></h2>
      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left side: bio text -->
       <div class="space-y-6 order-1">
        <div class="inline-block px-4 py-2 bg-blue-500/20 border border-blue-400/40 rounded-full mb-2">
         <p class="text-blue-300 text-sm font-semibold" id="about-status">2nd-yr BS Information Technology</p>
@@ -276,12 +276,12 @@
        </div>
       </div>
       
-      <!-- Profile photo with link -->
+      <!-- Right side: YOUR ACTUAL PHOTO pp1.jpg with link wrapper -->
       <div class="flex justify-center items-center order-2">
        <div class="profile-img-frame">
         <div class="profile-img-inner">
           <a href="https://example.com/your-link" class="profile-link" target="_blank" rel="noopener noreferrer">
-            <img id="profile-image" src="pp1.jpg" alt="Clifferson Orbillo photo" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=1E293B&color=60A5FA&bold=true&size=280&rounded=false&fontsize=0.65&name=Clifferson+Orbillo';">
+            <img id="profile-image" src="pp1.jpg" alt="Clifferson Orbillo - personal photo" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=1E293B&color=60A5FA&bold=true&size=280&rounded=false&fontsize=0.65&name=Clifferson+Orbillo';">
           </a>
         </div>
        </div>
@@ -398,7 +398,7 @@
     </div>
    </section>
 
-   <!-- Contact Section: with Gmail & Facebook (KLIPERSON) linked -->
+   <!-- Contact Section: Gmail & Facebook (KLIPERSON) linked -->
    <section id="contact" class="w-full px-6 md:px-12 py-20 bg-gradient-to-t from-slate-900 via-slate-900 to-transparent">
     <div class="max-w-4xl mx-auto">
      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center"><span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Let's Connect</span></h2>
@@ -451,7 +451,7 @@
             </div>
         </div>
         
-        <!-- Right Side: Social callout with GitHub, LinkedIn, Instagram and extra Facebook mention -->
+        <!-- Right Side: Social callout -->
         <div class="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/60 flex flex-col justify-center items-center text-center">
             <i data-lucide="sparkle" style="width: 48px; height: 48px; color: #a78bfa; margin-bottom: 1rem;"></i>
             <h3 class="text-2xl font-bold mb-2">Interested?</h3>
